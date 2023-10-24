@@ -1,43 +1,42 @@
 #include "lists.h"
 
 /**
- * insert_nodeint_at_index - inserts a new node in a linked list,
- * at a given position
+ * insert_nodeint_at_index - inserts a new node at a given position
  * @head: pointer to the first node in the list
- * @idx: index where the new node is added
- * @n: data to insert in the new node
- * Return: pointer to the new node, or NULL
+ * @idx: where the new node is added
+ * @n: data to insert into the new node
+ * Return: pointer to the new node or NULL (failure)
  */
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
-	unsigned int i;
-	listint_t *new;
-	listint_t *temp = *head;
+	unsigned int x;
+	listint_t *ven;
+	listint_t *emp = *head;
 
-	new = malloc(sizeof(listint_t));
-	if (!new || !head)
+	ven = malloc(sizeof(listint_t));
+	if (!ven || !head)
 	return (NULL);
 
-	new->n = n;
-	new->next = NULL;
+	ven->n = n;
+	ven->next = NULL;
 
 	if (idx == 0)
 	{
-		new->next = *head;
-		*head = new;
-		return (new);
+		ven->next = *head;
+		*head = ven;
+		return (ven);
 	}
 
-	for (i = 0; temp && i < idx; i++)
+	for (x = 0; emp && x < idx; x++)
 	{
-		if (i == idx - 1)
+		if (x == idx - 1)
 		{
-			new->next = temp->next;
-			temp->next = new;
-			return (new);
+			ven->next = emp->next;
+			emp->next = ven;
+			return (ven);
 		}
 	else
-		temp = temp->next;
+		emp = emp->next;
 	}
 
 	return (NULL);
